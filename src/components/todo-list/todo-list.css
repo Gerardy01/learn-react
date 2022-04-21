@@ -1,0 +1,7 @@
+.todo-item {
+    margin: 10px;
+    padding: 5px;
+
+    border-bottom: 1px solid rgb(222, 222, 222);
+    list-style: none;
+}

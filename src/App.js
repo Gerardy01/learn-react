@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css"
+import Todo from "./components/todo/todo.js";
+
 
 function App() {
+
+  const [getValue, setValue] = useState("");
+
+  const ubah = () => {
+    if (!getValue || getValue == "ini adalah todo list") {
+        setValue("this is todo list")
+    } else {
+        setValue("ini adalah todo list")
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>My Todo List</h1>
+      <Todo theValue={getValue} />
+      <button onClick={ubah}>ubah</button>
     </div>
-  );
+  )
 }
 
 export default App;

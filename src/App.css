@@ -2,3 +2,12 @@
   margin: 0px;
   padding: 0px;
 }
+
+.container {
+  width: 50%;
+  margin: auto;
+}
+
+.container h1 {
+  text-align: center;
+}

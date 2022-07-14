@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from 'react-router-dom'
+
 import TodoList from "./TodoList"
 import "./todo.css"
 
 
 
 function Todo() {
+
+    let navigate = useNavigate();
 
     const [list, setList] = useState([
         {
@@ -38,15 +42,8 @@ function Todo() {
 
     }
 
-    const test = () => {
-        if (theInput == "HELLO WORLD") {
-            return theInput;
-        }
-    }
-
     return (
         <div className="todo">
-            <h1>{test()}</h1>
 
             <form>
                 <input type="text" placeholder="input here" onChange={(event => setTheInput(event.target.value))} value={theInput}/>
@@ -58,7 +55,8 @@ function Todo() {
                     return <TodoList e={e} key={e.id} />
                 })}
             </ul>
-
+            
+            <button onClick={() => navigate("/")}>back to home</button>
         </div>
     )
 }

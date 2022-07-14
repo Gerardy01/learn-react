@@ -7,7 +7,6 @@ function TodoList(props) {
 
     useEffect(() => {
         setListData(props.e);
-        console.log(props.e);
     }, [props.e])
 
     return (

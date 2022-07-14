@@ -1,14 +1,20 @@
-
+import { useState, useEffect } from 'react'
 
 
 function TodoList(props) {
 
+    const [listData, setListData] = useState(null);
+
+    useEffect(() => {
+        setListData(props.e);
+        console.log(props.e);
+    }, [props.e])
+
     return (
         <>
-            {
-                props.theList.map((data) => {
-                    return <li id={data.id}> {data.title} </li>
-                })
+            { listData && (
+                <li id={listData.id}>{listData.title}</li>
+                )
             }
         </>
     )

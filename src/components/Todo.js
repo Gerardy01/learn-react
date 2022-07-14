@@ -54,7 +54,9 @@ function Todo() {
             </form>
 
             <ul className="list-holder">
-                <TodoList theList ={list}/>
+                {list.map((e) => {
+                    return <TodoList e={e} key={e.id} />
+                })}
             </ul>
 
         </div>

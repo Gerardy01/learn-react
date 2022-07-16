@@ -6,7 +6,9 @@ function ProfileView() {
     let { user } = useParams()
 
     return (
-        <h1>this is {user} profile</h1>
+        <>
+            <h1>this is {user} profile</h1>
+        </>
     )
 }
 

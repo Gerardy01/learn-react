@@ -1,9 +1,20 @@
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 
 
 function ProfileView() {
 
-    let { user } = useParams()
+    let navigate = useNavigate();
+    let { user } = useParams(); // for insert url params to variable
+
+    useEffect(() => {
+        const tokenData = sessionStorage.getItem('token');
+        
+        if (!tokenData) {
+            navigate("/login");
+        }
+
+    }, []);
 
     return (
         <>

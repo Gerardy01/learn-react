@@ -10,6 +10,15 @@ function Todo() {
 
     let navigate = useNavigate();
 
+    useEffect(() => {
+        const tokenData = sessionStorage.getItem('token');
+        
+        if (!tokenData) {
+            navigate("/login");
+        }
+
+    }, []);
+
     const [list, setList] = useState([
         {
             id: 1,

@@ -1,12 +1,21 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 
 
 function mockFetch(url, body) {
-    if (body.email != 'admin@gmail.com' || body.password != 'admin123' || url != 'www.try.com/api/v1/user-login') {
+
+    if (url != 'www.try.com/api/v1/user-login') {
         return Promise.reject({
             status: 404,
             msg: "login failed"
+        });
+    }
+
+    if (body.email != 'admin@gmail.com' || body.password != 'admin123') {
+        return Promise.reject({
+            status: 404,
+            msg: "wrong email or password"
         });
     }
 
@@ -14,7 +23,10 @@ function mockFetch(url, body) {
         new Response(
             JSON.stringify({
                 status: 200,
-                accessToken: 'token123'
+                accessToken: 'token123',
+                data: {
+                    username: 'Admin'
+                }
             })
         )
     )
@@ -24,6 +36,8 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    let navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -35,11 +49,15 @@ function Login() {
             res.json().then(data => {
                 console.log(data);
 
+                sessionStorage.setItem('token', data.accessToken);
+
                 setEmail('');
-                setPassword('')
+                setPassword('');
+                
+                navigate(`/profile/${data.data.username}`);
             });
         }).catch(err => {
-            console.log(err, 'lol');
+            alert(err.msg);
         });
     }
 

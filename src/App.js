@@ -7,20 +7,23 @@ import TodoListView from "./views/TodoListView";
 import ErrorPage from "./views/ErrorPage";
 import ProfileView from "./views/ProfileView";
 import Login from "./views/Login";
+import GameListPage from "./views/GameListPage";
+import GameDetails from "./views/GameDetails";
 
 
 
 function App() {
 
   return (
-    <div className="container">
+    <div>
       <Router>
 
         <nav>
-          <ul>  
+          <ul style={{width: '100%', display: 'flex', justifyContent: 'space-around', alignItem: 'center'}}>  
             <li><Link to="/">Home</Link></li>
             <li><Link to="/todo">Todo Page</Link></li>
             <li><Link to="/login">Login Page</Link></li>
+            <li><Link to="/game-list">Game List</Link></li>
           </ul>
         </nav>
 
@@ -29,6 +32,8 @@ function App() {
           <Route path="/todo" element={<TodoListView />} />
           <Route path="/login" element={<Login />} />
           <Route path="profile/:user" element={<ProfileView />} />
+          <Route path="game-list" element={<GameListPage />} />
+          <Route path="game-details/:id" element={<GameDetails />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

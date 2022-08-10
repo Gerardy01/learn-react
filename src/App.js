@@ -10,6 +10,7 @@ import Login from "./views/Login";
 import GameListPage from "./views/GameListPage";
 import GameDetails from "./views/GameDetails";
 import CounterPage from "./views/CounterPage";
+import PokemonListPage from "./views/PokemonListPage";
 
 
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="game-list" element={<GameListPage />} />
           <Route path="game-details/:id" element={<GameDetails />} />
           <Route path="/counter" element={<CounterPage />} />
+          <Route path="/pokemon-list" element={<PokemonListPage />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
